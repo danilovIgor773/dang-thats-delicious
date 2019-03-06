@@ -4,6 +4,6 @@ const stroreController = require('../controllers/storeController');
 
 
 // Do work here
-router.get('/', stroreController.homePage);
+router.get('/', stroreController.myMiddleware, stroreController.homePage);
 
 module.exports = router;

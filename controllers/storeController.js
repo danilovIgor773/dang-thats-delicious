@@ -1,11 +1,5 @@
-// exports.myMiddleware = (req, res, next) => {
-//   req.name = "Danny";
-//   //res.cookie('name', 'Danny is a mage', {maxAge: 7777777});
-//   if(req.name === 'Danny'){
-//     throw Error('That is a bad name for person!');
-//   }
-//   next();
-// };
+const mongoose = require('mongoose');
+const Store = mongoose.model('Store');
 
 exports.homePage = (req, res) => {
   res.render('index');
@@ -16,6 +10,8 @@ exports.addStore = (req, res) => {
   res.render('editStore', {title: 'Add store'});
 };
 
-exports.createStore = (req, res) => {
-  res.json(req.body);
+exports.createStore = async (req, res) => {
+  const store = new Store(req.body);
+  await store.save();
+  res.redirect('/');
 };

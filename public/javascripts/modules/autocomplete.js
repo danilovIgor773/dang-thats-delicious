@@ -12,4 +12,3 @@ function autocomplete(input, latInput, lngInput){
 }
 
 export default autocomplete;
-// gMAps key: AIzaSyAZlfBP5utilyc8EhWKeZPhwo-CDtE0xKc

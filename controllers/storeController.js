@@ -79,3 +79,10 @@ exports.updateStore = async (req, res) => {
   //Redirect them the store and tell them it worked
   res.redirect(`/stores/${store._id}/edit`);
 };
+
+exports.getStoreBySlug = async (req, res) => {
+  const store = await Store.findOne({ slug: req.params.slug });
+  //res.json(store);
+  if(!store) return next();
+  res.render('store', { store, title: store.name });
+};
